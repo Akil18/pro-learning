@@ -1,11 +1,13 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Link, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Courses from './Pages/Courses/Courses';
-import Home from './components/Home/Home';
+import Home from './Pages/Home/Home';
 import Main from './layout/Main';
 import Blog from './Pages/Blog/Blog';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
+import Course from './components/Course/Course';
+import Checkout from './components/Checkout/Checkout';
 
 function App() {
   const router = createBrowserRouter([
@@ -19,7 +21,13 @@ function App() {
         },
         {
           path: 'courses',
+          loader: () => fetch(`https://pro-learning-server-side.vercel.app/courses/`),
           element: <Courses></Courses>,
+        },
+        {
+          path: 'courses/:courseId',
+          loader: ({ params }) => fetch(`https://pro-learning-server-side.vercel.app/courses/${params.courseId}`),
+          element: <Checkout></Checkout>,
         },
         {
           path: 'blog',
@@ -33,12 +41,12 @@ function App() {
           path: 'register',
           element: <Register></Register>,
         },
-        {
-          path: '*',
-          element: <h1>404 Not Found</h1>,
-        }
       ]
     },
+    {
+      path: '*',
+      element: <h1 className="text-xl mt-16">Nohting Here. Go back to <Link className="text-blue-500" to='/'>Home</Link></h1>,
+    }
   ]);
 
   return (
