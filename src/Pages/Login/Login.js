@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 
 const Login = () => {
-    const {sigIn, signInWithGoogle, signInWithGithub} = useContext(AuthContext);
+    const {signIn, signInWithGoogle, signInWithGithub} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from || '/';
@@ -15,7 +15,7 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password);
 
-        sigIn(email, password)
+        signIn(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);

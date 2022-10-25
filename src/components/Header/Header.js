@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/UserContext';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
+    const {user, logOut} = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {})
+            .catch(error => {console.error(error)})
+    };
     return (
         <div className="navbar bg-base-100 px-4">
             <div className="flex-1">
@@ -16,7 +25,26 @@ const Header = () => {
                     <li><Link to='/blog'>Blog</Link></li>
                     <div className="flex items-center">
                         <button className="p-4 rounded-md hover:bg-gray-200">Dark</button>
-                        <Link to='login' className="p-4 rounded-md hover:bg-gray-200">Log In</Link>
+                        {
+                            user?.uid ?
+                            <>
+                                <button onClick={handleLogOut} className="p-4 rounded-md hover:bg-gray-200">Log Out</button>
+                                {
+                                    user?.photoURL ?
+                                    <div className="avatar">
+                                        <div className="w-8 rounded-full">
+                                            <img src={user.photoURL} alt={user.email} />
+                                        </div>
+                                    </div>
+                                    :
+                                    <FaUser />
+                                }
+                            </>
+                            : 
+                            <Link to='login'>
+                                <button className="p-4 rounded-md hover:bg-gray-200">Log In</button>
+                            </Link>
+                        }
                     </div>
                 </ul>
             </div>
