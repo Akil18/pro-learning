@@ -6,8 +6,8 @@ import Main from './layout/Main';
 import Blog from './Pages/Blog/Blog';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
-import Course from './components/Course/Course';
 import Checkout from './components/Checkout/Checkout';
+import PrivateRoute from './routes/PrivateRoute';
 
 function App() {
   const router = createBrowserRouter([
@@ -27,7 +27,7 @@ function App() {
         {
           path: 'courses/:courseId',
           loader: ({ params }) => fetch(`https://pro-learning-server-side.vercel.app/courses/${params.courseId}`),
-          element: <Checkout></Checkout>,
+          element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
         },
         {
           path: 'blog',
