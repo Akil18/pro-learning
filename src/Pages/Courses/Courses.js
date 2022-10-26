@@ -13,13 +13,13 @@ const Courses = () => {
     }
 
     return (
-        <div className="grid grid-cols-4">
+        <div className="lg:grid lg:grid-cols-4">
             {
                 courseDetail?.id ?
                 <CourseDetail course={courseDetail}></CourseDetail>
                 :
-                <div className="col-span-3">
-                    <h2 className="text-2xl font-bold p-32">We offer a list of six of the most popular programming languages that will be in demand in 2023.</h2>
+                <div className="lg:col-span-3">
+                    <h2 className="lg:text-2xl font-bold m-4 lg:p-32">We offer a list of six of the most popular programming languages that will be in demand in 2023.</h2>
                 </div> 
             }
             <div className="drawer drawer-mobile">
