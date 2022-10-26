@@ -5,7 +5,7 @@ const Checkout = () => {
     const checkoutInfo = useLoaderData();
     return (
         <div>
-            {checkoutInfo.name}
+            <h1 className="text-2xl font-bold">{checkoutInfo.name}</h1>
         </div>
     );
 };

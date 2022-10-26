@@ -27,7 +27,7 @@ const Header = () => {
 
     console.log(mode);
     return (
-        <div id="header" className="navbar bg-base-100 px-4">
+        <div id="header" className="navbar px-4">
             <div className="flex-1">
                 <Link to='/' className="btn btn-ghost p-0">
                     <img className="w-12" src="logo.png" alt="pro-learning" />
