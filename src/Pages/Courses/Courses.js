@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import Course from '../../components/Course/Course';
+import CourseDetail from '../../components/CourseDetail/CourseDetail';
 
 const Courses = () => {
     const [courseDetail, setCourseDetail] = useState({});
@@ -14,25 +15,11 @@ const Courses = () => {
     return (
         <div className="grid grid-cols-4">
             {
-                courseDetail?.id > 0 ?
-                <div className="col-span-3">
-                    <h1>{courseDetail.name}</h1>
-                    <Link to={`/courses/${courseDetail.id}`}>Get Premium</Link>
-                </div>
+                courseDetail?.id ?
+                <CourseDetail course={courseDetail}></CourseDetail>
                 :
                 <div className="col-span-3">
-                <h1>What is a Programming Language?</h1> 
-                <p>
-                    A programming language is a way for programmers (developers) to communicate with computers. Programming languages consist of a set of rules that allows string values to be converted into various ways of generating machine code, or, in the case of visual programming languages, graphical elements. Generally speaking, a program is a set of instructions written in a particular language (C, C++, Java, Python) to achieve a particular task.
-                </p>
-
-
-                <h1>What Are the Best Programming Languages to Learn in 2023?</h1>
-                <p>
-                    What coding and programming language should i learn? JavaScript and Python, two of the most popular languages in the startup industry, are in high demand. Most startups use Python-based backend frameworks such as Django (Python), Flask (Python), and NodeJS (JavaScript). These languages are also considered to be the best programming languages to learn for beginners.
-                </p>
-
-                <h2>We offer a list of six of the most popular programming languages that will be in demand in 2023.</h2>
+                    <h2 className="text-2xl font-bold p-32">We offer a list of six of the most popular programming languages that will be in demand in 2023.</h2>
                 </div> 
             }
             <div className="drawer drawer-mobile">
