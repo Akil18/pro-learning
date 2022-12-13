@@ -1,4 +1,4 @@
-# Assignment 10 - Pro Learning
+# Pro Learning
 
 -the courses page displays available courses in a drawer component
 -login is required to access private route(premium access)
